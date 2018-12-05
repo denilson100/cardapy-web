@@ -1,60 +1,70 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
+  <div class="corpo">
+    <h1 class="centralizado">{{ titulo }}</h1>
+
+    <ul class="lista-fotos">
+      <li class="lista-fotos-item" v-for="photo in photos">
+
+        <meu-painel :id="photo.id">
+            <img class="imagem-responsiva" :src="photo.url" :alt="photo.title">
+            <p>{{ photo.title }}</p>
+        </meu-painel>
+
+      </li>
     </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+
   </div>
+
 </template>
 
 <script>
+
+import Painel from './components/shared/painel/Painel.vue';
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+
+  components: {
+    'meu-painel' : Painel
+  },
+
+  data() {
+      return {
+        titulo: 'Lista de Pedidos',
+        photos: []
+      }
+    },
+
+    created() {
+
+    this.$http.get('https://jsonplaceholder.typicode.com/albums/1/photos')
+      .then(res => res.json())
+      .then(photos => this.photos = photos, err => console.log(err));
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
+  .titulo {
+    text-align: center;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 96%;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  .lista-fotos {
+    list-style: none;
+  }
 
-a {
-  color: #42b983;
-}
+  .lista-fotos .lista-fotos-item {
+    display: inline-block;
+  }
+
+  .imagem-responsiva {
+    width: 100%;
+  }
+
 </style>
