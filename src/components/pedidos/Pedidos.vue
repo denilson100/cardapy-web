@@ -57,7 +57,7 @@ export default {
   }
 
   .spacing {
-    Margin: 10px;
+    padding: 10px;
   }
 
   .fundo {

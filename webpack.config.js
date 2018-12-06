@@ -21,6 +21,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader' // <-- this line
           }
           // other vue-loader options go here
         }
@@ -36,7 +37,7 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
     ]
   },
   resolve: {
