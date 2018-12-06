@@ -3,7 +3,7 @@ import Pedidos from './components/pedidos/Pedidos.vue';
 
 export const routes = [
 
-    { path: '', component: Home },
-    { path: '/pedidos', component: Pedidos }
+    { path: '', component: Home, titulo: 'Home' },
+    { path: '/pedidos', component: Pedidos, titulo: 'Pedidos' }
 
 ];

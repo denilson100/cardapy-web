@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <h1 class="centralizado">{{ titulo }}</h1>
+  <div class="fundo">
+    <h1 class="centralizado spacing">{{ titulo }}</h1>
 
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="photo in photos">
 
-        <meu-painel :id="photo.id">
-            <img class="imagem-responsiva" :src="photo.url" :alt="photo.title">
-            <p>{{ photo.title }}</p>
+        <meu-painel :id="photo.id" :title="photo.title" :url="photo.url">
         </meu-painel>
 
       </li>
@@ -48,9 +46,22 @@ export default {
     list-style: none;
   }
   .lista-fotos .lista-fotos-item {
-    display: inline-block;
+    /* display: inline-block; */
   }
   .imagem-responsiva {
     width: 100%;
   }
+
+  .centralizado {
+    text-align: center;
+  }
+
+  .spacing {
+    Margin: 10px;
+  }
+
+  .fundo {
+    background: #eeeeee;
+  }
+
 </style>

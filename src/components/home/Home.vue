@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>titulo</h1>
+    <h1>Bem-Vindo ao Cardapy Empresa Web.</h1>
   </div>
 
 </template>
