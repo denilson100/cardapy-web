@@ -4,6 +4,7 @@
     <div class="col-">
     </div>
 
+    </div>
     <div class="col-md">
       <md-card class="padding-card">
         <div>
@@ -27,7 +28,6 @@
         <md-button @click="signIn">ENTRAR</md-button>
       </md-card-actions>
     </md-card>
-    </div>
 
     <div class="col-">
     </div>
@@ -38,11 +38,12 @@
 
 <script>
 
-import firebase,{ functions } from 'firebase';
+import firebase, { functions } from 'firebase';
 
 export default {
    name: 'RegularCards',
    name: 'TextFields',
+   name: 'DialogAlert',
     data: () => ({
       initial: 'Initial Value',
       type: null,
@@ -51,24 +52,22 @@ export default {
       number: null,
       textarea: null,
       autogrow: null,
-      disabled: null
+      disabled: null,
+      email: '',
+      password: '',
+      routes
     }),
-
-    data() {
-      return {
-        email: '',
-        password: ''
-      }
-    },
 
     methods: {
       signIn: function() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
           function(user) {
-            alert('Está conectado ' + user);
+            // alert('Está conectado ' + user);
+            window.location.href = '/';
           },
           function(err) {
             alert('Oops, ' + err.message);
+            // router.push({ path: 'pedidos'})
           }
         )
       }
