@@ -18,6 +18,7 @@
 <script>
 
 import Painel from '../shared/painel/Painel.vue';
+import firebase, { functions } from 'firebase';
 
 export default {
   components: {
@@ -29,10 +30,31 @@ export default {
         photos: []
       }
     },
-    created() {
+  created() {
+    let user = firebase.auth().currentUser;
+    let id = user.uid;
+    let data = '2018-08-23'
+    if(user == null) {
+      window.location.href = '/login';
+    }
+
     this.$http.get('https://jsonplaceholder.typicode.com/albums/1/photos')
       .then(res => res.json())
       .then(photos => this.photos = photos, err => console.log(err));
+
+    this.getStatus();
+  },
+
+  methods: {
+    getStatus: function() {
+      let user = firebase.auth().currentUser;
+        if (user == null) {
+          // window.location.href = '/login'
+          console.log('Nao logado');
+        } else {
+          console.log('Logado');
+        }
+    }
   }
 }
 </script>

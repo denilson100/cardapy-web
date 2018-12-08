@@ -54,13 +54,7 @@ export default {
     },
 
   created() {
-    let user = firebase.auth().currentUser;
-    if (user == null) {
-      // window.location.href = '/login'
-      console.log('Nao logado');
-    } else {
-      console.log('Logado');
-    }
+
   }
 
 }

@@ -8,7 +8,7 @@
         </md-card-media>
         <md-card-header-text class="spacing">
           <div class="md-title">{{ id }}</div>
-          <div class="md-subhead">{{ title }}</div>
+          <div class="md-subhead">{{ nome }}</div>
         </md-card-header-text>
       </md-card-header>
 
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-    props: ['id', 'title', 'url']
+    props: ['id', 'nome', 'url']
 }
 </script>
 

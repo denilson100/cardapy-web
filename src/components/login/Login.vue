@@ -62,7 +62,8 @@ export default {
       signIn: function() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
           function(user) {
-            // alert('Está conectado ' + user);
+            let usuario = firebase.auth().currentUser;
+            console.log('Id: ' + usuario.uid);
             window.location.href = '/';
           },
           function(err) {
